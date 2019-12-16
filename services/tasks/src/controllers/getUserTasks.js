@@ -2,31 +2,33 @@ const { models } = require("../models");
 const { createError, GENERIC_ERROR } = require("../util/error");
 
 /**
- * @description Get users
+ * @description Get user task
  *
  * @param {object} req
  * @param {object} res
  * @param {object} next
  */
 
-const getAllUser = async (req, res, next) => {
+const getUserTasks = async (req, res, next) => {
   try {
-    const users = await models.User.find();
+    const { taskId, userId } = req.params;
 
-    if (!users.length) {
+    const tasks = await models.Task.find({ _id: taskId, userId });
+
+    if (!tasks.length) {
       return res.status(200).json({
         success: true,
-        message: "Could not find any user",
-        totalNumberOfUsers: 0,
-        users: []
+        message: "No task to do now",
+        totalNumberOfTasks: 0,
+        tasks
       });
     }
 
     return res.status(200).json({
       success: true,
-      message: "All users",
-      totalNumberOfUsers: users.length,
-      users
+      message: "All user task",
+      totalNumberOfTask: tasks.length,
+      tasks
     });
   } catch (err) {
     return next(
@@ -38,4 +40,4 @@ const getAllUser = async (req, res, next) => {
   }
 };
 
-module.exports = getAllUser;
+module.exports = getUserTasks;
