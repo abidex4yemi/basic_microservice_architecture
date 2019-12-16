@@ -1,0 +1,33 @@
+version: '3'
+services:
+    auth:
+        build: './services/auth'
+        ports:
+            - '3001:3000'
+            depends_on:
+                db
+            environment:
+                - MONGO_DB_URI=mongodb://db/microservices
+
+    tasks:
+        build: './services/tasks'
+        ports:
+            - '3002:3000'
+            depends_on:
+                db
+            environment:
+                - MONGO_DB_URI=mongodb://db/microservices
+
+    users:
+        build: './services/users'
+        ports:
+            - '3003:3000'
+            depends_on:
+                db
+            environment:
+                - MONGO_DB_URI=mongodb://db/microservices
+
+    db:
+        image: mongo
+        ports:
+            - "27017:27017"
