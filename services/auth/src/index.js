@@ -13,6 +13,13 @@ app.use(cors());
 app.use(logger("dev"));
 app.use(helmet());
 
+app.get("/", (req, res) => {
+  return res.status(200).json({
+    message: "API root...",
+    data: []
+  });
+});
+
 app.use("api/v1/auth", userRouter);
 
 // Handle invalid request
