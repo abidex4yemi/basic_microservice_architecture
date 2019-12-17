@@ -1,4 +1,4 @@
-const { BAD_REQUEST } = require('../../helpers/error');
+const { BAD_REQUEST } = require("../../util/error");
 
 const badRequest = (err, req, res, next) => {
   if (err.status !== BAD_REQUEST) {
@@ -6,12 +6,12 @@ const badRequest = (err, req, res, next) => {
   }
 
   // Handle invalid JSON body
-  if (err.type && err.type.includes('entity.parse.failed')) {
+  if (err.type && err.type.includes("entity.parse.failed")) {
     return res.status(BAD_REQUEST).json({
       success: false,
       errors: [
         {
-          message: 'Invalid JSON object check request body',
+          message: "Invalid JSON object check request body",
           body: err.body
         }
       ]
@@ -21,7 +21,7 @@ const badRequest = (err, req, res, next) => {
   return res.status(BAD_REQUEST).json({
     success: false,
     errors: {
-      message: err.message || 'Bad Request',
+      message: err.message || "Bad Request",
       status: err.status
     }
   });

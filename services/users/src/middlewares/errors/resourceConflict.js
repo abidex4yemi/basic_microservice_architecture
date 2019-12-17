@@ -1,4 +1,4 @@
-const { CONFLICT } = require('../../helpers/error');
+const { CONFLICT } = require("../../util/error");
 
 /**
  * Handle resource resource already exist error

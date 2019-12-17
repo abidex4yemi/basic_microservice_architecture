@@ -1,4 +1,4 @@
-const { UNAUTHORIZED } = require('../../helpers/error');
+const { UNAUTHORIZED } = require("../../util/error");
 
 /**
  * Handle unauthorized error
@@ -15,7 +15,7 @@ const unauthorized = (err, req, res, next) => {
 
   return res.status(UNAUTHORIZED).json({
     success: false,
-    message: err.message || 'Unauthorized',
+    message: err.message || "Unauthorized",
     errors: [err]
   });
 };

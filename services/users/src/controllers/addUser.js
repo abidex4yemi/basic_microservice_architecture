@@ -1,5 +1,5 @@
 const { models } = require("../models");
-const { createError, GENERIC_ERROR, CONFLICT } = require("../util/error");
+const { createError, GENERIC_ERROR } = require("../util/error");
 
 /**
  * @description Create new User

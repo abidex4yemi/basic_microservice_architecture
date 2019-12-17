@@ -1,4 +1,4 @@
-const { NOT_FOUND } = require('../../helpers/error');
+const { NOT_FOUND } = require("../../util/error");
 
 /**
  * Handle resource not found error
@@ -15,7 +15,7 @@ const notFound = (err, req, res, next) => {
 
   return res.status(NOT_FOUND).json({
     success: false,
-    message: err.message || 'Resource not found',
+    message: err.message || "Resource not found",
     errors: [err]
   });
 };

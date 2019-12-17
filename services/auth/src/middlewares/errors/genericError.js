@@ -1,4 +1,4 @@
-const { GENERIC_ERROR } = require('../../helpers/error');
+const { GENERIC_ERROR } = require("../../util/error");
 
 /**
  * Handle server error
@@ -12,7 +12,7 @@ const { GENERIC_ERROR } = require('../../helpers/error');
 const genericError = (err, req, res, next) =>
   res.status(GENERIC_ERROR).json({
     ok: false,
-    message: err.message || 'Internal server error',
+    message: err.message || "Internal server error",
     errors: [err]
   });
 

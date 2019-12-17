@@ -1,4 +1,4 @@
-const { FORBIDDEN } = require('../../helpers/error');
+const { FORBIDDEN } = require("../../util/error");
 
 /**
  * Handle bad request error
@@ -16,7 +16,7 @@ const forbidden = (err, req, res, next) => {
 
   return res.status(FORBIDDEN).json({
     success: false,
-    message: err.message || 'Forbidden',
+    message: err.message || "Forbidden",
     errors: [err]
   });
 };
