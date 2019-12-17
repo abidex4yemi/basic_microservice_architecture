@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { createError, UNAUTHORIZED } = require('../helpers/error');
+const jwt = require("jsonwebtoken");
+const { createError, UNAUTHORIZED } = require("../util/error");
 
 /**
  * @description verifies token
@@ -11,13 +11,13 @@ const { createError, UNAUTHORIZED } = require('../helpers/error');
  * @returns String
  */
 const verifyToken = async (req, res, next) => {
-  const token = req.get('Authorization');
+  const token = req.get("Authorization");
 
   try {
     if (!token) {
       return next(
         createError({
-          message: 'No token provided, must be set on the Authorization Header',
+          message: "No token provided, must be set on the Authorization Header",
           status: UNAUTHORIZED
         })
       );
@@ -31,7 +31,7 @@ const verifyToken = async (req, res, next) => {
   } catch (error) {
     return next(
       createError({
-        message: 'Unable to verify token, Pls provide a valid token',
+        message: "Unable to verify token, Pls provide a valid token",
         status: UNAUTHORIZED
       })
     );

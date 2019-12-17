@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./user");
+const Task = require("./task");
 const { DB_URI } = require("../config");
 
 // mongoose.set("useFindAndModify", false);
@@ -14,6 +14,6 @@ const connectDB = () => {
     .catch(err => console.log(err));
 };
 
-const models = { User };
+const models = { Task };
 
 module.exports = { models, connectDB };

@@ -12,30 +12,30 @@ services:
     build: "./services/auth"
     restart: always
     ports:
-      - 3001:3000
+      - 3000:3000
     depends_on:
       - db
     environment:
-      - MONGO_DB_URI=mongodb://db/microservices
+      - MONGO_DB_URI=mongodb://db/mongo-db-services
 
   tasks:
     container_name: user-tasks-services
     build: "./services/tasks"
     restart: always
     ports:
-      - 3002:3000
+      - 3001:3000
     depends_on:
       - db
     environment:
-      - MONGO_DB_URI=mongodb://db/microservices
+      - MONGO_DB_URI=mongodb://db/mongo-db-services
 
   users:
     container_name: users-services
     build: "./services/users"
     restart: always
     ports:
-      - 3003:3000
+      - 3002:3000
     depends_on:
       - db
     environment:
-      - MONGO_DB_URI=mongodb://db/microservices
+      - MONGO_DB_URI=mongodb://db/mongo-db-services
