@@ -13,7 +13,7 @@ const taskSchema = Joi.object().keys({
   state: Joi.string()
     .trim()
     .required(),
-  userId: Joi.uuid().required()
+  userId: Joi.string().required()
 });
 
 /**
