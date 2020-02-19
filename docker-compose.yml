@@ -1,41 +1,49 @@
-version: "3"
-
+version: '3'
 services:
   db:
-    container_name: mongo-db-services
+    container_name: mongo-db-service
     image: mongo
     ports:
       - 27017:27017
 
   auth:
-    container_name: user-auth-services
-    build: "./services/auth"
+    container_name: user-auth-service
+    build: './services/auth'
     restart: always
     ports:
       - 3000:3000
+    volumes:
+      - /auth/node_modules
+      - ./services/auth:/auth
     depends_on:
       - db
     environment:
-      - MONGO_DB_URI=mongodb://db/mongo-db-services
+      - MONGO_DB_URI=mongodb://db/mongo-db-service
 
   tasks:
-    container_name: user-tasks-services
-    build: "./services/tasks"
+    container_name: user-tasks-service
+    build: './services/tasks'
     restart: always
     ports:
       - 3001:3000
+    volumes:
+      - /tasks/node_modules
+      - ./services/tasks:/tasks
     depends_on:
       - db
     environment:
-      - MONGO_DB_URI=mongodb://db/mongo-db-services
+      - MONGO_DB_URI=mongodb://db/mongo-db-service
 
   users:
-    container_name: users-services
-    build: "./services/users"
+    container_name: users-service
+    build: './services/users'
     restart: always
     ports:
       - 3002:3000
+    volumes:
+      - /users/node_modules
+      - ./services/users:/users
     depends_on:
       - db
     environment:
-      - MONGO_DB_URI=mongodb://db/mongo-db-services
+      - MONGO_DB_URI=mongodb://db/mongo-db-service

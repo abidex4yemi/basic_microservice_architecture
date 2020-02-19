@@ -2,7 +2,27 @@
 
 **You can view the deployed (Heroku) backend here:**
 
-**[Production Deployment](https://)** <br/>
+### Services port number
+
+- `auth-services` port `3000`
+- `tasks-services` port: `3001`
+- `user-services` port: `3002`
+
+### Server url
+
+- https://167.172.240.212
+
+### available endpoint with crud capability
+
+```
+Auth: api/v1/auth/register
+Auth: api/v1/auth/login
+User: api/v1/users
+Task: api/v1/tasks
+JWT_SECRET=<generated string>
+```
+
+**[Production Deployment](https://167.172.240.212)** <br/>
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/)
 
@@ -11,8 +31,8 @@
 To get this project up and running locally:
 
 1. Clone this repo
-2. Make sure you have docker install
-3. Run `docker-compose up -d to start all services`.
+2. Make sure you have `docker` install
+3. Run `docker-compose up -d` to start all services.
 
 4. Create a `.env` file in the root of the project with the following environment variables:
 

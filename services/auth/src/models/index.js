@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const User = require("./user");
 const { DB_URI } = require("../config");
 
-// mongoose.set("useFindAndModify", false);
-// mongoose.set("useCreateIndex", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
 
 const connectDB = () => {
   mongoose

@@ -1,11 +1,11 @@
-FROM node:latest
+FROM node:alpine
 
-COPY . /src
+WORKDIR /tasks
 
-WORKDIR /src
+COPY ./package.json ./
 
 RUN npm install
 
-EXPOSE 3000
+COPY ./ ./
 
-CMD npm start
+CMD ["npm", "start"]
